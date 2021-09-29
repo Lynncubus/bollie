@@ -2,9 +2,16 @@ import { IStorage, MemoryStorage } from '../shared/storage';
 import { SetRequired } from 'type-fest';
 import fetch from 'isomorphic-fetch';
 import { Token } from '../shared/types';
-import { ApiGetOrdersQuery, ApiOrder, ApiReducedOrder } from './order';
+import {
+  ApiGetOrdersQuery,
+  ApiOrder,
+  ApiPutShipmentBody,
+  ApiReducedOrder,
+} from './order';
 import { fetchWithRatelimit } from '../shared/fetch-with-ratelimit';
 import debug from 'debug';
+import { ApiError } from '..';
+import { ApiProcess } from './process';
 
 const log = debug('bollie:client');
 
@@ -115,6 +122,10 @@ export class Client {
       }
     );
 
+    if (response.status !== 200) {
+      throw new ApiError(await response.json(), response);
+    }
+
     const body = await response.json();
 
     const orders: ApiReducedOrder[] = body.orders ?? [];
@@ -131,6 +142,32 @@ export class Client {
         ...(await this.getFetchOptions()),
       }
     );
+
+    if (response.status !== 200) {
+      throw new ApiError(await response.json(), response);
+    }
+
+    return await response.json();
+  }
+
+  async shipOrderItem(shipment: ApiPutShipmentBody): Promise<ApiProcess> {
+    log(
+      'Adding shipment for orderItemId %s',
+      shipment.orderItems[0].orderItemId
+    );
+
+    const response = await fetchWithRatelimit(
+      `${this.endpoint}/orders/shipment`,
+      {
+        ...(await this.getFetchOptions()),
+        method: 'POST',
+        body: JSON.stringify(shipment),
+      }
+    );
+
+    if (response.status !== 200) {
+      throw new ApiError(await response.json(), response);
+    }
 
     return await response.json();
   }

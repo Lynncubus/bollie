@@ -381,8 +381,6 @@ Array [
 ]
 `;
 
-exports[`should be able to fetch orders with different page 1`] = `Array []`;
-
 exports[`should be able to fetch orders with different status 1`] = `
 Array [
   Object {

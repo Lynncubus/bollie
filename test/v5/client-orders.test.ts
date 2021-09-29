@@ -18,12 +18,21 @@ describe('should be able to fetch orders', () => {
     expect(orders).toMatchSnapshot();
   });
 
-  test('with different page', async () => {
-    const orders = await client.getOrders({ page: 2 });
+  // Not on demo mode, but we can test outside of demo mode, except i dont want
+  // these in committed snapshots.
 
-    expect(orders).toBeInstanceOf(Array);
-    expect(orders).toMatchSnapshot();
-  });
+  // test('with different page', async () => {
+  //   const client = new Client({
+  //     clientId: process.env.BOL_CLIENT_ID as string,
+  //     clientSecret: process.env.BOL_CLIENT_SECRET as string,
+  //     storage,
+  //     // demo:true,
+  //   });
+  //   const orders = await client.getOrders({ page: 2 });
+
+  //   expect(orders).toBeInstanceOf(Array);
+  //   expect(orders).toMatchSnapshot();
+  // });
 
   test('with different fullfillment method', async () => {
     const orders = await client.getOrders({ fulfilmentMethod: 'FBB' });

@@ -27,12 +27,9 @@ export interface ClientOptions {
 }
 
 export class Client {
-  protected readonly options: SetRequired<
-    ClientOptions,
-    'tokenEndpoint' | 'apiEndpoint'
-  >;
+  readonly options: SetRequired<ClientOptions, 'tokenEndpoint' | 'apiEndpoint'>;
 
-  protected readonly storage: IStorage;
+  readonly storage: IStorage;
 
   constructor(options: ClientOptions) {
     log('Creating new client');
@@ -46,7 +43,7 @@ export class Client {
     this.storage = this.options.storage ?? new MemoryStorage();
   }
 
-  protected get endpoint() {
+  get endpoint() {
     return (
       this.options.apiEndpoint +
       (this.options.demo ? '/retailer-demo' : '/retailer')

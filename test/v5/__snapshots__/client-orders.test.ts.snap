@@ -1,0 +1,448 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should be able to get a single order Demo order 1042831430 1`] = `
+Object {
+  "billingDetails": Object {
+    "city": "PLATOONDORP",
+    "company": "Pieter Post",
+    "countryCode": "NL",
+    "email": "2yldzdi2wjcf5ir4sycq7lufqpytxy@verkopen.test2.bol.com",
+    "extraAddressInformation": "Extra informatie",
+    "firstName": "Pieter",
+    "houseNumber": "21",
+    "houseNumberExtension": "X",
+    "kvkNumber": "99887766",
+    "orderReference": "Mijn order ref",
+    "salutation": "MALE",
+    "streetName": "Skywalkerstraat",
+    "surname": "Post",
+    "vatNumber": "NL123456789B01",
+    "zipCode": "1234AB",
+  },
+  "orderId": "1042831430",
+  "orderItems": Array [
+    Object {
+      "cancellationRequest": false,
+      "commission": 2.22,
+      "fulfilment": Object {
+        "distributionParty": "RETAILER",
+        "expiryDate": "2018-04-21",
+        "latestDeliveryDate": "2018-04-18",
+        "method": "FBR",
+        "timeFrameType": "REGULAR",
+      },
+      "offer": Object {
+        "offerId": "8f6283e3-de98-c92f-e053-3598790a63b5",
+        "reference": "MijnOffer0021",
+      },
+      "orderItemId": "6107331382",
+      "product": Object {
+        "ean": "8712626055143",
+        "title": "Star Wars - The happy family 2",
+      },
+      "quantity": 1,
+      "quantityCancelled": 0,
+      "quantityShipped": 1,
+      "unitPrice": 22.98,
+    },
+    Object {
+      "cancellationRequest": false,
+      "commission": 2.22,
+      "fulfilment": Object {
+        "distributionParty": "RETAILER",
+        "expiryDate": "2018-04-21",
+        "latestDeliveryDate": "2018-04-21",
+        "method": "FBR",
+        "timeFrameType": "REGULAR",
+      },
+      "offer": Object {
+        "offerId": "8f6125e3-de98-c08f-e053-3523590a63b9",
+        "reference": "MijnOffer1121",
+      },
+      "orderItemId": "6107331383",
+      "product": Object {
+        "ean": "8717418510749",
+        "title": "Star Wars - The happy family 2",
+      },
+      "quantity": 3,
+      "quantityCancelled": 0,
+      "quantityShipped": 2,
+      "unitPrice": 10.3,
+    },
+  ],
+  "orderPlacedDateTime": "2019-04-20T12:58:39+02:00",
+  "pickupPoint": false,
+  "shipmentDetails": Object {
+    "city": "BRUSSEL",
+    "countryCode": "BE",
+    "email": "2mqmu3hefoawq3mqgzxh4hbpkyh2rs@verkopen.test2.bol.com",
+    "extraAddressInformation": "Apartment",
+    "firstName": "Hans",
+    "houseNumber": "199",
+    "houseNumberExtension": "B",
+    "language": "nl",
+    "salutation": "MALE",
+    "streetName": "Skywalkerstraat",
+    "surname": "de Grote",
+    "zipCode": "1200",
+  },
+}
+`;
+
+exports[`Should be able to get a single order Demo order 1043946570 1`] = `
+Object {
+  "billingDetails": Object {
+    "city": "PLATOONDORP",
+    "company": "Pieter Post",
+    "countryCode": "NL",
+    "email": "2yldzdi2wjcf5ir4sycq7lufqpytxy@verkopen.test2.bol.com",
+    "extraAddressInformation": "Extra informatie",
+    "firstName": "Pieter",
+    "houseNumber": "21",
+    "houseNumberExtension": "X",
+    "kvkNumber": "99887766",
+    "orderReference": "Mijn order ref",
+    "salutation": "MALE",
+    "streetName": "Skywalkerstraat",
+    "surname": "Post",
+    "vatNumber": "NL123456789B01",
+    "zipCode": "1234AB",
+  },
+  "orderId": "1043946570",
+  "orderItems": Array [
+    Object {
+      "cancellationRequest": false,
+      "commission": 2.22,
+      "fulfilment": Object {
+        "distributionParty": "RETAILER",
+        "expiryDate": "2019-05-04",
+        "latestDeliveryDate": "2019-05-01",
+        "method": "FBR",
+        "timeFrameType": "REGULAR",
+      },
+      "offer": Object {
+        "offerId": "8f6285e3-de98-c97f-e053-3544090a63b3",
+        "reference": "MijnOffer6627",
+      },
+      "orderItemId": "6042823871",
+      "product": Object {
+        "ean": "8717418510749",
+        "title": "Star Wars - The happy family 2",
+      },
+      "quantity": 3,
+      "quantityCancelled": 0,
+      "quantityShipped": 3,
+      "unitPrice": 11,
+    },
+  ],
+  "orderPlacedDateTime": "2019-04-29T18:18:21+02:00",
+  "pickupPoint": true,
+  "shipmentDetails": Object {
+    "city": "PLATOONDORP",
+    "countryCode": "NL",
+    "email": "2puwjjic7wxsbmkj3bc2v6jsj2wimk@verkopen.test2.bol.com",
+    "firstName": "Pieter",
+    "houseNumber": "21",
+    "language": "nl",
+    "pickupPointName": "Albert Heijn: UTRECHT",
+    "salutation": "MALE",
+    "streetName": "Skywalkerstraat",
+    "surname": "Post",
+    "zipCode": "1234AB",
+  },
+}
+`;
+
+exports[`Should be able to get a single order Demo order A4K8290LP0 1`] = `
+Object {
+  "billingDetails": Object {
+    "city": "PLATOONDORP",
+    "company": "Pieter Post",
+    "countryCode": "NL",
+    "email": "2yldzdi2wjcf5ir4sycq7lufqpytxy@verkopen.test2.bol.com",
+    "extraAddressInformation": "Extra informatie",
+    "firstName": "Pieter",
+    "houseNumber": "21",
+    "houseNumberExtension": "X",
+    "kvkNumber": "99887766",
+    "orderReference": "Mijn order ref",
+    "salutation": "MALE",
+    "streetName": "Skywalkerstraat",
+    "surname": "Post",
+    "vatNumber": "NL123456789B01",
+    "zipCode": "1234AB",
+  },
+  "orderId": "A4K8290LP0",
+  "orderItems": Array [
+    Object {
+      "cancellationRequest": false,
+      "commission": 2.22,
+      "fulfilment": Object {
+        "distributionParty": "RETAILER",
+        "expiryDate": "2019-12-18",
+        "latestDeliveryDate": "2019-12-15",
+        "method": "FBR",
+        "timeFrameType": "REGULAR",
+      },
+      "offer": Object {
+        "offerId": "8f6283e3-de98-c92f-e053-3598790a63b5",
+        "reference": "MijnOffer0021",
+      },
+      "orderItemId": "2070906705",
+      "product": Object {
+        "ean": "8718846038683",
+        "title": "adidas Originals Booklet case Bohemian color for iPhone 7/8 colourful",
+      },
+      "quantity": 1,
+      "quantityCancelled": 0,
+      "quantityShipped": 1,
+      "unitPrice": 34.99,
+    },
+  ],
+  "orderPlacedDateTime": "2019-12-06T13:04:34+01:00",
+  "pickupPoint": false,
+  "shipmentDetails": Object {
+    "city": "PLATOONDORP",
+    "countryCode": "NL",
+    "email": "2mqmu3hefoawq3mqgzxh4hbpkyh2rs@verkopen.test2.bol.com",
+    "firstName": "Hans",
+    "houseNumber": "199",
+    "language": "nl",
+    "salutation": "FEMALE",
+    "streetName": "Skywalkerstraat",
+    "surname": "de Grote",
+    "zipCode": "1234AB",
+  },
+}
+`;
+
+exports[`Should be able to get a single order Demo order B3K8290LP0 1`] = `
+Object {
+  "billingDetails": Object {
+    "city": "PLATOONDORP",
+    "company": "Pieter Post",
+    "countryCode": "NL",
+    "email": "2yldzdi2wjcf5ir4sycq7lufqpytxy@verkopen.test2.bol.com",
+    "extraAddressInformation": "Extra informatie",
+    "firstName": "Pieter",
+    "houseNumber": "21",
+    "houseNumberExtension": "X",
+    "kvkNumber": "99887766",
+    "orderReference": "Mijn order ref",
+    "salutation": "MALE",
+    "streetName": "Skywalkerstraat",
+    "surname": "Post",
+    "vatNumber": "NL123456789B01",
+    "zipCode": "1234AB",
+  },
+  "orderId": "B3K8290LP0",
+  "orderItems": Array [
+    Object {
+      "cancellationRequest": false,
+      "commission": 2.22,
+      "fulfilment": Object {
+        "distributionParty": "RETAILER",
+        "exactDeliveryDate": "2020-01-08",
+        "expiryDate": "2020-01-09",
+        "method": "FBR",
+        "timeFrameType": "REGULAR",
+      },
+      "offer": Object {
+        "offerId": "8f6283e3-de98-c92f-e053-3598790a63b5",
+        "reference": "MijnOffer0021",
+      },
+      "orderItemId": "2070906706",
+      "product": Object {
+        "ean": "8718846038683",
+        "title": "adidas Originals Booklet case Bohemian color for iPhone 7/8 colourful",
+      },
+      "quantity": 1,
+      "quantityCancelled": 0,
+      "quantityShipped": 1,
+      "unitPrice": 34.99,
+    },
+  ],
+  "orderPlacedDateTime": "2020-01-01T13:04:34+01:00",
+  "pickupPoint": false,
+  "shipmentDetails": Object {
+    "city": "PLATOONDORP",
+    "countryCode": "NL",
+    "email": "2mqmu3hefoawq3mqgzxh4hbpkyh2rs@verkopen.test2.bol.com",
+    "firstName": "Hans",
+    "houseNumber": "199",
+    "language": "nl",
+    "salutation": "FEMALE",
+    "streetName": "Skywalkerstraat",
+    "surname": "de Grote",
+    "zipCode": "1234AB",
+  },
+}
+`;
+
+exports[`should be able to fetch orders with default options 1`] = `
+Array [
+  Object {
+    "orderId": "1043946570",
+    "orderItems": Array [
+      Object {
+        "ean": "8717418510749",
+        "orderItemId": "6042823871",
+        "quantity": 3,
+        "quantityCancelled": 0,
+        "quantityShipped": 3,
+      },
+    ],
+    "orderPlacedDateTime": "2019-04-29T18:18:21+02:00",
+  },
+  Object {
+    "orderId": "1042831430",
+    "orderItems": Array [
+      Object {
+        "ean": "8712626055143",
+        "orderItemId": "6107331382",
+        "quantity": 1,
+        "quantityCancelled": 0,
+        "quantityShipped": 1,
+      },
+      Object {
+        "ean": "8804269223123",
+        "orderItemId": "6107331383",
+        "quantity": 1,
+        "quantityCancelled": 0,
+        "quantityShipped": 1,
+      },
+    ],
+    "orderPlacedDateTime": "2019-04-20T12:58:39+02:00",
+  },
+  Object {
+    "orderId": "A4K8290LP0",
+    "orderItems": Array [
+      Object {
+        "ean": "8718846038683",
+        "orderItemId": "2070906705",
+        "quantity": 1,
+        "quantityCancelled": 0,
+        "quantityShipped": 1,
+      },
+    ],
+    "orderPlacedDateTime": "2019-12-06T13:04:34+01:00",
+  },
+  Object {
+    "orderId": "B3K8290LP0",
+    "orderItems": Array [
+      Object {
+        "ean": "8718846038683",
+        "orderItemId": "2070906706",
+        "quantity": 1,
+        "quantityCancelled": 0,
+        "quantityShipped": 1,
+      },
+    ],
+    "orderPlacedDateTime": "2020-01-01T13:04:34+01:00",
+  },
+]
+`;
+
+exports[`should be able to fetch orders with different fullfillment method 1`] = `
+Array [
+  Object {
+    "orderId": "1043965710",
+    "orderItems": Array [
+      Object {
+        "ean": "8717418510749",
+        "orderItemId": "6107989317",
+        "quantity": 2,
+        "quantityCancelled": 0,
+        "quantityShipped": 2,
+      },
+    ],
+    "orderPlacedDateTime": "2019-04-30T21:56:39+02:00",
+  },
+  Object {
+    "orderId": "1042823870",
+    "orderItems": Array [
+      Object {
+        "ean": "8785056370398",
+        "orderItemId": "6107771545",
+        "quantity": 1,
+        "quantityCancelled": 0,
+        "quantityShipped": 1,
+      },
+      Object {
+        "ean": "8785073140359",
+        "orderItemId": "6107771546",
+        "quantity": 1,
+        "quantityCancelled": 0,
+        "quantityShipped": 1,
+      },
+    ],
+    "orderPlacedDateTime": "2019-04-30T16:47:32+02:00",
+  },
+]
+`;
+
+exports[`should be able to fetch orders with different page 1`] = `Array []`;
+
+exports[`should be able to fetch orders with different status 1`] = `
+Array [
+  Object {
+    "orderId": "1043946570",
+    "orderItems": Array [
+      Object {
+        "ean": "8717418510749",
+        "orderItemId": "6042823871",
+        "quantity": 3,
+        "quantityCancelled": 0,
+        "quantityShipped": 3,
+      },
+    ],
+    "orderPlacedDateTime": "2019-04-29T18:18:21+02:00",
+  },
+  Object {
+    "orderId": "1042831430",
+    "orderItems": Array [
+      Object {
+        "ean": "8712626055143",
+        "orderItemId": "6107331382",
+        "quantity": 1,
+        "quantityCancelled": 0,
+        "quantityShipped": 1,
+      },
+      Object {
+        "ean": "8804269223123",
+        "orderItemId": "6107331383",
+        "quantity": 1,
+        "quantityCancelled": 0,
+        "quantityShipped": 1,
+      },
+    ],
+    "orderPlacedDateTime": "2019-04-20T12:58:39+02:00",
+  },
+  Object {
+    "orderId": "A4K8290LP0",
+    "orderItems": Array [
+      Object {
+        "ean": "8718846038683",
+        "orderItemId": "2070906705",
+        "quantity": 1,
+        "quantityCancelled": 0,
+        "quantityShipped": 1,
+      },
+    ],
+    "orderPlacedDateTime": "2019-12-06T13:04:34+01:00",
+  },
+  Object {
+    "orderId": "B3K8290LP0",
+    "orderItems": Array [
+      Object {
+        "ean": "8718846038683",
+        "orderItemId": "2070906706",
+        "quantity": 1,
+        "quantityCancelled": 0,
+        "quantityShipped": 1,
+      },
+    ],
+    "orderPlacedDateTime": "2020-01-01T13:04:34+01:00",
+  },
+]
+`;

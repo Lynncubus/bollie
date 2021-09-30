@@ -90,6 +90,13 @@ export class Client {
       }
     )
       .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          throw new Error(`${data.error}: ${data.error_description}`);
+        }
+
+        return data;
+      })
       .then(token => {
         token.expires_at = Date.now() + token.expires_in * 1000;
 

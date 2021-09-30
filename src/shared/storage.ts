@@ -1,5 +1,5 @@
 import { Token } from './types';
-import { readFile, writeFile } from 'fs/promises';
+import { readFile, writeFile } from 'fs-extra';
 import path from 'path';
 import { mkdirSync } from 'fs';
 

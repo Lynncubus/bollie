@@ -1,4 +1,7 @@
-export var TransporterCode;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TransporterCode = void 0;
+var TransporterCode;
 (function (TransporterCode) {
     TransporterCode["Briefpost"] = "BRIEFPOST";
     TransporterCode["Ups"] = "UPS";
@@ -27,5 +30,5 @@ export var TransporterCode;
     TransporterCode["Packs"] = "PACKS";
     TransporterCode["Courier"] = "COURIER";
     TransporterCode["Rjp"] = "RJP";
-})(TransporterCode || (TransporterCode = {}));
+})(TransporterCode = exports.TransporterCode || (exports.TransporterCode = {}));
 //# sourceMappingURL=order.js.map

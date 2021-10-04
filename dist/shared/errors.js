@@ -1,22 +1,25 @@
-import { __extends } from "tslib";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ApiError = exports.RateLimitMaxRetriesError = exports.RateLimitError = void 0;
+var tslib_1 = require("tslib");
 var RateLimitError = /** @class */ (function (_super) {
-    __extends(RateLimitError, _super);
+    tslib_1.__extends(RateLimitError, _super);
     function RateLimitError() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     return RateLimitError;
 }(Error));
-export { RateLimitError };
+exports.RateLimitError = RateLimitError;
 var RateLimitMaxRetriesError = /** @class */ (function (_super) {
-    __extends(RateLimitMaxRetriesError, _super);
+    tslib_1.__extends(RateLimitMaxRetriesError, _super);
     function RateLimitMaxRetriesError() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     return RateLimitMaxRetriesError;
 }(Error));
-export { RateLimitMaxRetriesError };
+exports.RateLimitMaxRetriesError = RateLimitMaxRetriesError;
 var ApiError = /** @class */ (function (_super) {
-    __extends(ApiError, _super);
+    tslib_1.__extends(ApiError, _super);
     function ApiError(body, response) {
         var _this = _super.call(this, "[" + response.status + "] " + body.title + ": " + body.detail) || this;
         _this.body = body;
@@ -25,5 +28,5 @@ var ApiError = /** @class */ (function (_super) {
     }
     return ApiError;
 }(Error));
-export { ApiError };
+exports.ApiError = ApiError;
 //# sourceMappingURL=errors.js.map

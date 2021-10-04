@@ -12,10 +12,10 @@ export interface ClientOptions {
     storage?: IStorage;
 }
 export declare class Client {
-    protected readonly options: SetRequired<ClientOptions, 'tokenEndpoint' | 'apiEndpoint'>;
-    protected readonly storage: IStorage;
+    readonly options: SetRequired<ClientOptions, 'tokenEndpoint' | 'apiEndpoint'>;
+    readonly storage: IStorage;
     constructor(options: ClientOptions);
-    protected get endpoint(): string;
+    get endpoint(): string;
     getFetchOptions(): Promise<RequestInit>;
     getToken(force?: boolean): Promise<Token>;
     protected fetchToken(): Promise<Token>;

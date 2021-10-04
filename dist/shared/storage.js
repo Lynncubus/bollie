@@ -1,20 +1,23 @@
-import { __awaiter, __generator } from "tslib";
-import { readFile, writeFile } from 'fs/promises';
-import path from 'path';
-import { mkdirSync } from 'fs';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FileStorage = exports.MemoryStorage = void 0;
+var tslib_1 = require("tslib");
+var fs_extra_1 = require("fs-extra");
+var path_1 = tslib_1.__importDefault(require("path"));
+var fs_1 = require("fs");
 var MemoryStorage = /** @class */ (function () {
     function MemoryStorage() {
     }
     MemoryStorage.prototype.getToken = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            return tslib_1.__generator(this, function (_a) {
                 return [2 /*return*/, this.token];
             });
         });
     };
     MemoryStorage.prototype.setToken = function (token) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            return tslib_1.__generator(this, function (_a) {
                 this.token = token;
                 return [2 /*return*/];
             });
@@ -22,20 +25,20 @@ var MemoryStorage = /** @class */ (function () {
     };
     return MemoryStorage;
 }());
-export { MemoryStorage };
+exports.MemoryStorage = MemoryStorage;
 var FileStorage = /** @class */ (function () {
     function FileStorage(path) {
         this.path = path;
-        mkdirSync(this.path, { recursive: true });
+        fs_1.mkdirSync(this.path, { recursive: true });
     }
     FileStorage.prototype.getToken = function () {
-        return __awaiter(this, void 0, void 0, function () {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
             var token, err_1;
-            return __generator(this, function (_a) {
+            return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, readFile(path.join(this.path, 'token.json'), 'utf-8')];
+                        return [4 /*yield*/, fs_extra_1.readFile(path_1.default.join(this.path, 'token.json'), 'utf-8')];
                     case 1:
                         token = _a.sent();
                         return [2 /*return*/, JSON.parse(token)];
@@ -53,10 +56,10 @@ var FileStorage = /** @class */ (function () {
         });
     };
     FileStorage.prototype.setToken = function (token) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, writeFile(path.join(this.path, 'token.json'), JSON.stringify(token), 'utf-8')];
+                    case 0: return [4 /*yield*/, fs_extra_1.writeFile(path_1.default.join(this.path, 'token.json'), JSON.stringify(token), 'utf-8')];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -66,5 +69,5 @@ var FileStorage = /** @class */ (function () {
     };
     return FileStorage;
 }());
-export { FileStorage };
+exports.FileStorage = FileStorage;
 //# sourceMappingURL=storage.js.map

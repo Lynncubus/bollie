@@ -1,3 +1,32 @@
+export declare enum TransporterCode {
+    Briefpost = "BRIEFPOST",
+    Ups = "UPS",
+    Tnt = "TNT",
+    TntEXTRA = "TNT-EXTRA",
+    TntBrief = "TNT_BRIEF",
+    TntExpress = "TNT-EXPRESS",
+    Dyl = "DYL",
+    DpdNL = "DPD-NL",
+    DpdBE = "DPD-BE",
+    BpostBe = "BPOST_BE",
+    BpostBrief = "BPOST_BRIEF",
+    Dhlforyou = "DHLFORYOU",
+    Gls = "GLS",
+    FedexNl = "FEDEX_NL",
+    FedexBe = "FEDEX_BE",
+    Other = "OTHER",
+    Dhl = "DHL",
+    DhlDe = "DHL_DE",
+    DhlGlobalMail = "DHL-GLOBAL-MAIL",
+    Tsn = "TSN",
+    Fiege = "FIEGE",
+    Transmission = "TRANSMISSION",
+    ParcelNl = "PARCEL-NL",
+    Logoix = "LOGOIX",
+    Packs = "PACKS",
+    Courier = "COURIER",
+    Rjp = "RJP"
+}
 export declare type ApiPutShipmentBody = {
     orderItems: [{
         orderItemId: string;
@@ -8,7 +37,7 @@ export declare type ApiPutShipmentBody = {
 } | {
     transport: {
         trackAndTrace: string;
-        transporterCode: 'BRIEFPOST' | 'UPS' | 'TNT' | 'TNT-EXTRA' | 'TNT_BRIEF' | 'TNT-EXPRESS' | 'DYL' | 'DPD-NL' | 'DPD-BE' | 'BPOST_BE' | 'BPOST_BRIEF' | 'DHLFORYOU' | 'GLS' | 'FEDEX_NL' | 'FEDEX_BE' | 'OTHER' | 'DHL' | 'DHL_DE' | 'DHL-GLOBAL-MAIL' | 'TSN' | 'FIEGE' | 'TRANSMISSION' | 'PARCEL-NL' | 'LOGOIX' | 'PACKS' | 'COURIER' | 'RJP';
+        transporterCode: TransporterCode;
     };
 });
 export declare const ShipmentBodySchema: import("superstruct").Struct<import("superstruct/lib/utils").AnyStruct | ({

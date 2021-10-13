@@ -1,6 +1,7 @@
 import { StructError } from 'superstruct';
 import { FileStorage } from '../../src';
 import { Client } from '../../src/v5';
+import { TransporterCode } from '../../src/v5/shipments';
 
 const storage = new FileStorage('./test/.tmp/v5');
 
@@ -50,7 +51,7 @@ describe('should be able to send shipments', () => {
       orderItems: [{ orderItemId: '1234567' }],
       transport: {
         trackAndTrace: '12345',
-        transporterCode: 'BPOST_BE',
+        transporterCode: TransporterCode.BpostBe,
       },
     });
 

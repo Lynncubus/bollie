@@ -9,6 +9,36 @@ import {
   union,
 } from 'superstruct';
 
+export enum TransporterCode {
+  Briefpost = 'BRIEFPOST',
+  Ups = 'UPS',
+  Tnt = 'TNT',
+  TntEXTRA = 'TNT-EXTRA',
+  TntBrief = 'TNT_BRIEF',
+  TntExpress = 'TNT-EXPRESS',
+  Dyl = 'DYL',
+  DpdNL = 'DPD-NL',
+  DpdBE = 'DPD-BE',
+  BpostBe = 'BPOST_BE',
+  BpostBrief = 'BPOST_BRIEF',
+  Dhlforyou = 'DHLFORYOU',
+  Gls = 'GLS',
+  FedexNl = 'FEDEX_NL',
+  FedexBe = 'FEDEX_BE',
+  Other = 'OTHER',
+  Dhl = 'DHL',
+  DhlDe = 'DHL_DE',
+  DhlGlobalMail = 'DHL-GLOBAL-MAIL',
+  Tsn = 'TSN',
+  Fiege = 'FIEGE',
+  Transmission = 'TRANSMISSION',
+  ParcelNl = 'PARCEL-NL',
+  Logoix = 'LOGOIX',
+  Packs = 'PACKS',
+  Courier = 'COURIER',
+  Rjp = 'RJP',
+}
+
 export type ApiPutShipmentBody = {
   orderItems: [{ orderItemId: string }];
   shipmentReference?: string;
@@ -17,34 +47,7 @@ export type ApiPutShipmentBody = {
   | {
       transport: {
         trackAndTrace: string;
-        transporterCode:
-          | 'BRIEFPOST'
-          | 'UPS'
-          | 'TNT'
-          | 'TNT-EXTRA'
-          | 'TNT_BRIEF'
-          | 'TNT-EXPRESS'
-          | 'DYL'
-          | 'DPD-NL'
-          | 'DPD-BE'
-          | 'BPOST_BE'
-          | 'BPOST_BRIEF'
-          | 'DHLFORYOU'
-          | 'GLS'
-          | 'FEDEX_NL'
-          | 'FEDEX_BE'
-          | 'OTHER'
-          | 'DHL'
-          | 'DHL_DE'
-          | 'DHL-GLOBAL-MAIL'
-          | 'TSN'
-          | 'FIEGE'
-          | 'TRANSMISSION'
-          | 'PARCEL-NL'
-          | 'LOGOIX'
-          | 'PACKS'
-          | 'COURIER'
-          | 'RJP';
+        transporterCode: TransporterCode;
       };
     }
 );
@@ -57,35 +60,7 @@ export const ShipmentBodySchema = intersection([
     type({
       transport: object({
         trackAndTrace: string(),
-        transporterCode: enums([
-          'BRIEFPOST',
-          'UPS',
-          'TNT',
-          'TNT-EXTRA',
-          'TNT_BRIEF',
-          'TNT-EXPRESS',
-          'DYL',
-          'DPD-NL',
-          'DPD-BE',
-          'BPOST_BE',
-          'BPOST_BRIEF',
-          'DHLFORYOU',
-          'GLS',
-          'FEDEX_NL',
-          'FEDEX_BE',
-          'OTHER',
-          'DHL',
-          'DHL_DE',
-          'DHL-GLOBAL-MAIL',
-          'TSN',
-          'FIEGE',
-          'TRANSMISSION',
-          'PARCEL-NL',
-          'LOGOIX',
-          'PACKS',
-          'COURIER',
-          'RJP',
-        ]),
+        transporterCode: enums(Object.values(TransporterCode)),
       }),
     }),
   ]),

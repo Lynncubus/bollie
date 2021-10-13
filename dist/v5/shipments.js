@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ShipmentBodySchema = exports.TransporterCode = void 0;
-var superstruct_1 = require("superstruct");
+const superstruct_1 = require("superstruct");
 var TransporterCode;
 (function (TransporterCode) {
     TransporterCode["Briefpost"] = "BRIEFPOST";

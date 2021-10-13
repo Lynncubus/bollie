@@ -14,21 +14,15 @@ var Client = /** @class */ (function () {
     function Client(options) {
         var _a;
         log('Creating new client');
-        // this.options = {
-        //   tokenEndpoint: 'https://login.bol.com',
-        //   apiEndpoint: 'https://api.bol.com',
-        //   demo: false,
-        //   ...options,
-        // };
         this.options = Object.assign({
             tokenEndpoint: 'https://login.bol.com',
             apiEndpoint: 'https://api.bol.com',
         }, options, {
             demo: typeof options.demo === 'object'
                 ? Object.assign({
-                    getOrders: true,
-                    getOrder: true,
-                    shipOrderItem: true,
+                    getOrders: false,
+                    getOrder: false,
+                    shipOrderItem: false,
                 }, options.demo)
                 : options.demo === true
                     ? {

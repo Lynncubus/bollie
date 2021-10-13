@@ -40,12 +40,6 @@ export class Client {
 
   constructor(options: ClientOptions) {
     log('Creating new client');
-    // this.options = {
-    //   tokenEndpoint: 'https://login.bol.com',
-    //   apiEndpoint: 'https://api.bol.com',
-    //   demo: false,
-    //   ...options,
-    // };
 
     this.options = Object.assign(
       {
@@ -58,9 +52,9 @@ export class Client {
           typeof options.demo === 'object'
             ? Object.assign(
                 {
-                  getOrders: true,
-                  getOrder: true,
-                  shipOrderItem: true,
+                  getOrders: false,
+                  getOrder: false,
+                  shipOrderItem: false,
                 },
                 options.demo
               )

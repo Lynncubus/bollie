@@ -18,7 +18,7 @@ export type RequestInitWithRateLimitOptions = {
 export const fetchWithRatelimit = async (
   input: RequestInfo,
   init: RequestInitWithRateLimitOptions
-) => {
+): Promise<Response> => {
   const { maxRetries = 10, retryAfterDefault = 10 }: RateLimitOptions =
     init?.rateLimit ?? {};
 

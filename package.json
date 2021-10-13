@@ -60,6 +60,7 @@
     "debug": "^4.3.2",
     "fs-extra": "^10.0.0",
     "isomorphic-fetch": "^3.0.0",
+    "superstruct": "^0.15.3",
     "type-fest": "^0.21.3"
   }
 }

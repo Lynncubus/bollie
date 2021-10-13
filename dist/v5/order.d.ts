@@ -74,14 +74,6 @@ export interface ApiOrderItemProduct {
 export interface ApiOrderItemAddictionalService {
     serviceType: string;
 }
-export interface ApiPutShipmentBody {
-    orderItems: [{
-        orderItemId: string;
-    }];
-    shipmentReference?: string;
-    shippingLabelId?: string;
-    transport?: ApiPutShipmentTransportBody;
-}
 export declare enum TransporterCode {
     Briefpost = "BRIEFPOST",
     Ups = "UPS",

@@ -1,19 +1,23 @@
-import { IStorage, MemoryStorage } from '../shared/storage';
-import { SetRequired } from 'type-fest';
-import fetch from 'isomorphic-fetch';
-import { Token } from '../shared/types';
-import {
-  ApiGetOrdersQuery,
-  ApiOrder,
-  ApiPutShipmentBody,
-  ApiReducedOrder,
-} from './order';
-import { fetchWithRatelimit } from '../shared/fetch-with-ratelimit';
 import debug from 'debug';
+import fetch from 'isomorphic-fetch';
+import { assert } from 'superstruct';
+import { SetRequired } from 'type-fest';
+
 import { ApiError } from '..';
+import { fetchWithRatelimit } from '../shared/fetch-with-ratelimit';
+import { IStorage, MemoryStorage } from '../shared/storage';
+import { Token } from '../shared/types';
+import { ApiGetOrdersQuery, ApiOrder, ApiReducedOrder } from './order';
 import { ApiProcess } from './process';
+import { ApiPutShipmentBody, ShipmentBodySchema } from './shipments';
 
 const log = debug('bollie:client');
+
+export interface ClientDemoOptions {
+  getOrders?: boolean;
+  getOrder?: boolean;
+  shipOrderItem?: boolean;
+}
 
 export interface ClientOptions {
   clientId: string;
@@ -21,33 +25,64 @@ export interface ClientOptions {
 
   tokenEndpoint?: string;
   apiEndpoint?: string;
-  demo?: boolean;
+  demo?: boolean | ClientDemoOptions;
 
   storage?: IStorage;
 }
 
 export class Client {
-  readonly options: SetRequired<ClientOptions, 'tokenEndpoint' | 'apiEndpoint'>;
+  readonly options: SetRequired<
+    ClientOptions,
+    'tokenEndpoint' | 'apiEndpoint'
+  > & { demo: ClientDemoOptions };
 
   readonly storage: IStorage;
 
   constructor(options: ClientOptions) {
     log('Creating new client');
-    this.options = {
-      tokenEndpoint: 'https://login.bol.com',
-      apiEndpoint: 'https://api.bol.com',
-      demo: false,
-      ...options,
-    };
+    // this.options = {
+    //   tokenEndpoint: 'https://login.bol.com',
+    //   apiEndpoint: 'https://api.bol.com',
+    //   demo: false,
+    //   ...options,
+    // };
+
+    this.options = Object.assign(
+      {
+        tokenEndpoint: 'https://login.bol.com',
+        apiEndpoint: 'https://api.bol.com',
+      },
+      options,
+      {
+        demo:
+          typeof options.demo === 'object'
+            ? Object.assign(
+                {
+                  getOrders: true,
+                  getOrder: true,
+                  shipOrderItem: true,
+                },
+                options.demo
+              )
+            : options.demo === true
+            ? {
+                getOrders: true,
+                getOrder: true,
+                shipOrderItem: true,
+              }
+            : {
+                getOrders: false,
+                getOrder: false,
+                shipOrderItem: false,
+              },
+      }
+    );
 
     this.storage = this.options.storage ?? new MemoryStorage();
   }
 
-  get endpoint() {
-    return (
-      this.options.apiEndpoint +
-      (this.options.demo ? '/retailer-demo' : '/retailer')
-    );
+  getEndpoint(demo: boolean = false) {
+    return this.options.apiEndpoint + (demo ? '/retailer-demo' : '/retailer');
   }
 
   async getFetchOptions(): Promise<RequestInit> {
@@ -120,7 +155,9 @@ export class Client {
     }
 
     const response = await fetchWithRatelimit(
-      `${this.endpoint}/orders?${query.toString()}`,
+      `${this.getEndpoint(
+        this.options.demo.getOrders
+      )}/orders?${query.toString()}`,
       {
         ...(await this.getFetchOptions()),
       }
@@ -141,7 +178,7 @@ export class Client {
     log('Getting order %s', orderId);
 
     const response = await fetchWithRatelimit(
-      `${this.endpoint}/orders/${orderId}`,
+      `${this.getEndpoint(this.options.demo.getOrder)}/orders/${orderId}`,
       {
         ...(await this.getFetchOptions()),
       }
@@ -155,24 +192,47 @@ export class Client {
   }
 
   async shipOrderItem(shipment: ApiPutShipmentBody): Promise<ApiProcess> {
+    assert(shipment, ShipmentBodySchema);
+
     log(
       'Adding shipment for orderItemId %s',
       shipment.orderItems[0].orderItemId
     );
 
-    const response = await fetchWithRatelimit(
-      `${this.endpoint}/orders/shipment`,
-      {
-        ...(await this.getFetchOptions()),
-        method: 'POST',
-        body: JSON.stringify(shipment),
+    if (this.options.demo.shipOrderItem) {
+      return {
+        processStatusId: '1234567',
+        entityId: '987654321',
+        eventType: 'CONFIRM_SHIPMENT',
+        description:
+          'Example process status description for processing 987654321.',
+        status: 'SUCCESS',
+        errorMessage: 'Example process status error message.',
+        createTimestamp: '2018-11-14T09:34:41+01:00',
+        links: [
+          {
+            rel: 'self',
+            href: 'https://api.bol.com/retailer/process-status/1234567',
+            method: 'GET',
+          },
+        ],
+      };
+    } else {
+      let response: Response;
+      response = await fetchWithRatelimit(
+        `${this.getEndpoint(this.options.demo.shipOrderItem)}/orders/shipment`,
+        {
+          ...(await this.getFetchOptions()),
+          method: 'POST',
+          body: JSON.stringify(shipment),
+        }
+      );
+
+      if (response.status !== 200) {
+        throw new ApiError(await response.json(), response);
       }
-    );
 
-    if (response.status !== 200) {
-      throw new ApiError(await response.json(), response);
+      return await response.json();
     }
-
-    return await response.json();
   }
 }

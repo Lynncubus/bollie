@@ -217,7 +217,7 @@ export class Client {
         `${this.getEndpoint(this.options.demo.shipOrderItem)}/orders/shipment`,
         {
           ...(await this.getFetchOptions()),
-          method: 'POST',
+          method: 'PUT',
           body: JSON.stringify(shipment),
         }
       );

@@ -141,7 +141,7 @@ class Client {
             }
             else {
                 let response;
-                response = yield fetch_with_ratelimit_1.fetchWithRatelimit(`${this.getEndpoint(this.options.demo.shipOrderItem)}/orders/shipment`, Object.assign(Object.assign({}, (yield this.getFetchOptions())), { method: 'POST', body: JSON.stringify(shipment) }));
+                response = yield fetch_with_ratelimit_1.fetchWithRatelimit(`${this.getEndpoint(this.options.demo.shipOrderItem)}/orders/shipment`, Object.assign(Object.assign({}, (yield this.getFetchOptions())), { method: 'PUT', body: JSON.stringify(shipment) }));
                 if (response.status !== 200) {
                     throw new __1.ApiError(yield response.json(), response);
                 }

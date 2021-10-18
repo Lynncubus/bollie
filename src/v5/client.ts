@@ -222,7 +222,7 @@ export class Client {
         }
       );
 
-      if (response.status !== 200) {
+      if (response.status < 200 || response.status >= 300) {
         throw new ApiError(await response.json(), response);
       }
 

@@ -152,9 +152,7 @@ export class Client {
       `${this.getEndpoint(
         this.options.demo.getOrders
       )}/orders?${query.toString()}`,
-      {
-        ...(await this.getFetchOptions()),
-      }
+      await this.getFetchOptions()
     );
 
     if (response.status !== 200) {

@@ -98,7 +98,7 @@ class Client {
             if (typeof options.status === 'string') {
                 query.set('status', options.status);
             }
-            const response = yield fetch_with_ratelimit_1.fetchWithRatelimit(`${this.getEndpoint(this.options.demo.getOrders)}/orders?${query.toString()}`, Object.assign({}, (yield this.getFetchOptions())));
+            const response = yield fetch_with_ratelimit_1.fetchWithRatelimit(`${this.getEndpoint(this.options.demo.getOrders)}/orders?${query.toString()}`, yield this.getFetchOptions());
             if (response.status !== 200) {
                 throw new __1.ApiError(yield response.json(), response);
             }

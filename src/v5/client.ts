@@ -2,6 +2,7 @@ import debug from 'debug';
 import fetch from 'isomorphic-fetch';
 import { assert } from 'superstruct';
 import { SetRequired } from 'type-fest';
+import { ApiProcessStatus } from '.';
 
 import { ApiError } from '..';
 import { fetchWithRatelimit } from '../shared/fetch-with-ratelimit';
@@ -198,7 +199,7 @@ export class Client {
         eventType: 'CONFIRM_SHIPMENT',
         description:
           'Example process status description for processing 987654321.',
-        status: 'SUCCESS',
+        status: ApiProcessStatus.Success,
         errorMessage: 'Example process status error message.',
         createTimestamp: '2018-11-14T09:34:41+01:00',
         links: [
@@ -226,5 +227,21 @@ export class Client {
 
       return await response.json();
     }
+  }
+
+  async getProcessStatus(processStatusId: string): Promise<ApiProcess> {
+    const response = await fetchWithRatelimit(
+      `${this.getEndpoint()}/process-status/${processStatusId}`,
+      {
+        ...(await this.getFetchOptions()),
+        method: 'GET',
+      }
+    );
+
+    if (response.status < 200 || response.status >= 300) {
+      throw new ApiError(await response.json(), response);
+    }
+
+    return await response.json();
   }
 }

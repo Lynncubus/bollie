@@ -30,4 +30,5 @@ export declare class Client {
     getOrders(options?: ApiGetOrdersQuery): Promise<ApiReducedOrder[]>;
     getOrder(orderId: string): Promise<ApiOrder>;
     shipOrderItem(shipment: ApiPutShipmentBody): Promise<ApiProcess>;
+    getProcessStatus(processStatusId: string): Promise<ApiProcess>;
 }

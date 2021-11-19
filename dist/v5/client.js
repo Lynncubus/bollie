@@ -5,6 +5,7 @@ const tslib_1 = require("tslib");
 const debug_1 = tslib_1.__importDefault(require("debug"));
 const isomorphic_fetch_1 = tslib_1.__importDefault(require("isomorphic-fetch"));
 const superstruct_1 = require("superstruct");
+const _1 = require(".");
 const __1 = require("..");
 const fetch_with_ratelimit_1 = require("../shared/fetch-with-ratelimit");
 const storage_1 = require("../shared/storage");
@@ -127,7 +128,7 @@ class Client {
                     entityId: '987654321',
                     eventType: 'CONFIRM_SHIPMENT',
                     description: 'Example process status description for processing 987654321.',
-                    status: 'SUCCESS',
+                    status: _1.ApiProcessStatus.Success,
                     errorMessage: 'Example process status error message.',
                     createTimestamp: '2018-11-14T09:34:41+01:00',
                     links: [
@@ -147,6 +148,15 @@ class Client {
                 }
                 return yield response.json();
             }
+        });
+    }
+    getProcessStatus(processStatusId) {
+        return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            const response = yield fetch_with_ratelimit_1.fetchWithRatelimit(`${this.getEndpoint()}/process-status/${processStatusId}`, Object.assign(Object.assign({}, (yield this.getFetchOptions())), { method: 'GET' }));
+            if (response.status < 200 || response.status >= 300) {
+                throw new __1.ApiError(yield response.json(), response);
+            }
+            return yield response.json();
         });
     }
 }

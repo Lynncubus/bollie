@@ -85,8 +85,8 @@ export class Client {
 
     return {
       headers: {
-        Accept: 'application/vnd.retailer.v5+json',
-        'Content-Type': 'application/vnd.retailer.v5+json',
+        Accept: 'application/vnd.retailer.v7+json',
+        'Content-Type': 'application/vnd.retailer.v7+json',
         Authorization: `${token.token_type} ${token.access_token}`,
       },
     };
